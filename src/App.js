@@ -7,73 +7,83 @@ import employees from "./MOCK_DATA.json";
 
 function App() {
   let [employeeState, setEmployeeState] = useState({
-    employees: employees,
-    filteredEmployees: employees
+    employees: employees
   });
+  let [filteredEmployeeState, setFilteredEmployeeState] = useState({
+    filteredEmployees: employees
+  })
   let [inputState, setInputState] = useState("");
 
-
   function handleChange(event) {
-    setInputState(event.target.value);
+    event.preventDefault();
+    const newInputState = event.target.value
+    setInputState(newInputState);
     console.log("inputState", inputState);
-    setEmployeeState({
-    ...employeeState, 
-      filteredEmployees: employeeState.employees.filter((employee) => (employee.lastName === inputState))
+    setFilteredEmployeeState({
+      filteredEmployees: employeeState.employees.filter(
+        (employee) => employee.lastName === inputState
+      ),
+    });
+  }
+
+
+  // Sort functions use setEmployeeState to arrange the employees
+  function ascendSortByLastName() {
+    setFilteredEmployeeState({
+      filteredEmployees: employeeState.employees.sort((a, b) => {
+        return a.lastName < b.lastName ? -1 : 1;
+      }),
+    });
+  }
+
+  function ascendSortByFirstName() {
+    setFilteredEmployeeState({
+      filteredEmployees: employeeState.employees.sort((a, b) => {
+        return a.firstName < b.firstName ? -1 : 1;
+      })
+    });
+  }
+
+  function descendSortByLastName() {
+    setFilteredEmployeeState({
+      filteredEmployees: employeeState.employees.sort((a, b) => {
+        return a.lastName < b.lastName ? 1 : -1;
+      }),
+    });
+  }
+
+  function descendSortByFirstName() {
+    setFilteredEmployeeState({
+      filteredEmployees: employeeState.employees.sort((a, b) => {
+        return a.firstName < b.firstName ? 1 : -1;
+      }),
     });
   }
 
   return (
     <div className="App">
       <Container fluid>
-        <input
-        value={inputState}
-        onChange={handleChange}></input>
-        <button
-          onClick={() => {
-            setEmployeeState({
-              employees: employeeState.employees.sort((a, b) => {
-                return a.lastName < b.lastName ? -1 : 1;
-              }),
-            });
-          }}
-        >
+        <input value={inputState} onChange={handleChange}></input>
+        <button onClick={ascendSortByLastName}>
           Sort By Last Name (Ascending)
         </button>
         <button
-          onClick={() => {
-            setEmployeeState({
-              employees: employeeState.employees.sort((a, b) => {
-                return a.firstName < b.firstName ? -1 : 1;
-              }),
-            });
-          }}
+          onClick={ascendSortByFirstName}
         >
           Sort By First Name (Ascending)
         </button>
         <button
-          onClick={() => {
-            setEmployeeState({
-              employees: employeeState.employees.sort((a, b) => {
-                return a.lastName < b.lastName ? 1 : -1;
-              }),
-            });
-          }}
+          onClick={descendSortByLastName}
         >
           Sort By Last Name (Descending)
         </button>
         <button
-          onClick={() => {
-            setEmployeeState({
-              employees: employeeState.employees.sort((a, b) => {
-                return a.firstName < b.firstName ? 1 : -1;
-              }),
-            });
-          }}
+          onClick={descendSortByFirstName}
         >
           Sort By First Name (Descending)
         </button>
         <Header />
-        <EmployeeList list={employeeState}/>
+        <EmployeeList list={filteredEmployeeState} />
       </Container>
     </div>
   );

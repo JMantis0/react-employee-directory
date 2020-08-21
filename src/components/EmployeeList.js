@@ -2,9 +2,10 @@ import React from "react";
 import EmployeeRow from "./EmployeeRow"
 
 function EmployeeList({ list }) {
+  console.log(list)
   return (
     <div>
-      {list.employees.map((employee) => (
+      {list.filteredEmployees.map((employee) => (
         <EmployeeRow
           thumbnail={employee.thumbnail}
           firstName={employee.firstName}
