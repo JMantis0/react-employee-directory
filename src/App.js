@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Container from "react-bootstrap/Container";
@@ -7,25 +7,30 @@ import employees from "./MOCK_DATA.json";
 
 function App() {
   let [employeeState, setEmployeeState] = useState({
-    employees: employees
+    employees: employees,
   });
   let [filteredEmployeeState, setFilteredEmployeeState] = useState({
-    filteredEmployees: employees
-  })
+    filteredEmployees: employees,
+  });
   let [inputState, setInputState] = useState("");
 
   function handleChange(event) {
-    event.preventDefault();
-    const newInputState = event.target.value
+    const newInputState = event.target.value;
     setInputState(newInputState);
-    console.log("inputState", inputState);
-    setFilteredEmployeeState({
-      filteredEmployees: employeeState.employees.filter(
-        (employee) => employee.lastName === inputState
-      ),
-    });
+  
   }
 
+  useEffect(() => {
+    setFilteredEmployeeState({
+      filteredEmployees: employeeState.employees.filter(
+        (employee) => {
+          return employee.lastName.includes( inputState) || employee.firstName.includes(inputState);
+        } 
+      )
+    });
+
+
+  }, [inputState]);
 
   // Sort functions use setEmployeeState to arrange the employees
   function ascendSortByLastName() {
@@ -40,7 +45,7 @@ function App() {
     setFilteredEmployeeState({
       filteredEmployees: employeeState.employees.sort((a, b) => {
         return a.firstName < b.firstName ? -1 : 1;
-      })
+      }),
     });
   }
 
@@ -63,23 +68,17 @@ function App() {
   return (
     <div className="App">
       <Container fluid>
-        <input value={inputState} onChange={handleChange}></input>
+        <input onChange={handleChange}></input>
         <button onClick={ascendSortByLastName}>
           Sort By Last Name (Ascending)
         </button>
-        <button
-          onClick={ascendSortByFirstName}
-        >
+        <button onClick={ascendSortByFirstName}>
           Sort By First Name (Ascending)
         </button>
-        <button
-          onClick={descendSortByLastName}
-        >
+        <button onClick={descendSortByLastName}>
           Sort By Last Name (Descending)
         </button>
-        <button
-          onClick={descendSortByFirstName}
-        >
+        <button onClick={descendSortByFirstName}>
           Sort By First Name (Descending)
         </button>
         <Header />
