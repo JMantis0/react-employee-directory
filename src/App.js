@@ -4,6 +4,12 @@ import Header from "./components/Header";
 import Container from "react-bootstrap/Container";
 import EmployeeList from "./components/EmployeeList";
 import employees from "./MOCK_DATA.json";
+import UPSEmployeeList from "./components/UPSEmployeeList";
+import UPSEmployeeRow from "./components/UPSEmployeeRow"
+import upsEmployees from "./csvjson (1).json"
+import SortButton from "./components/SortButton"
+import SortBar from "./components/SortBar"
+import InputBar from "./components/InputBar"
 
 function App() {
   let [employeeState, setEmployeeState] = useState({
@@ -24,7 +30,7 @@ function App() {
     setFilteredEmployeeState({
       filteredEmployees: employeeState.employees.filter(
         (employee) => {
-          return employee.lastName.includes( inputState) || employee.firstName.includes(inputState);
+          return employee.lastName.toLowerCase().includes( inputState.toLowerCase()) || employee.firstName.toLowerCase().includes(inputState.toLowerCase());
         } 
       )
     });
@@ -35,7 +41,7 @@ function App() {
   // Sort functions use setEmployeeState to arrange the employees
   function ascendSortByLastName() {
     setFilteredEmployeeState({
-      filteredEmployees: employeeState.employees.sort((a, b) => {
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
         return a.lastName < b.lastName ? -1 : 1;
       }),
     });
@@ -43,7 +49,7 @@ function App() {
 
   function ascendSortByFirstName() {
     setFilteredEmployeeState({
-      filteredEmployees: employeeState.employees.sort((a, b) => {
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
         return a.firstName < b.firstName ? -1 : 1;
       }),
     });
@@ -51,7 +57,7 @@ function App() {
 
   function descendSortByLastName() {
     setFilteredEmployeeState({
-      filteredEmployees: employeeState.employees.sort((a, b) => {
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
         return a.lastName < b.lastName ? 1 : -1;
       }),
     });
@@ -59,8 +65,24 @@ function App() {
 
   function descendSortByFirstName() {
     setFilteredEmployeeState({
-      filteredEmployees: employeeState.employees.sort((a, b) => {
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
         return a.firstName < b.firstName ? 1 : -1;
+      }),
+    });
+  }
+
+  function descendSortByRank() {
+    setFilteredEmployeeState({
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
+        return a.rank < b.rank ? 1 : -1;
+      }),
+    });
+  
+  }
+  function ascendSortByRank() {
+    setFilteredEmployeeState({
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
+        return a.rank > b.rank ? 1 : -1;
       }),
     });
   }
@@ -68,20 +90,15 @@ function App() {
   return (
     <div className="App">
       <Container fluid>
-        <input onChange={handleChange}></input>
-        <button onClick={ascendSortByLastName}>
-          Sort By Last Name (Ascending)
-        </button>
-        <button onClick={ascendSortByFirstName}>
-          Sort By First Name (Ascending)
-        </button>
-        <button onClick={descendSortByLastName}>
-          Sort By Last Name (Descending)
-        </button>
-        <button onClick={descendSortByFirstName}>
-          Sort By First Name (Descending)
-        </button>
-        <Header />
+        <InputBar onChange={handleChange} />
+        <SortBar
+        ascendByRank={ascendSortByRank}
+        descendByRank={descendSortByRank}
+        ascendByLastName={ascendSortByLastName}
+        ascendByFirstName={ascendSortByFirstName}
+        descendByLastName={descendSortByLastName}
+        descendByFirstName={descendSortByFirstName}
+        />
         <EmployeeList list={filteredEmployeeState} />
       </Container>
     </div>
