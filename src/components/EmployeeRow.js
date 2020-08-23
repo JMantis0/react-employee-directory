@@ -4,18 +4,18 @@ import Col from "react-bootstrap/Col";
 
 function EmployeeRow({ thumbnail, firstName, lastName, email, phone }) {
   return (
-    <Row>
+    <div>
+    <Row className="employeeRow">
       <Col xs={1}>
         <img
-          style={{ width: 50, height: 50 }}
           src={thumbnail}
           alt="employeeImage"
         ></img>
       </Col>
-      <Col xs={3} style={{ textAlign: "left" }}>
+      <Col xs={2} style={{ textAlign: "left" }}>
         {firstName}
       </Col>
-      <Col xs={3} style={{ textAlign: "left" }}>
+      <Col xs={2} style={{ textAlign: "left" }}>
         {lastName}
       </Col>
       <Col xs={3} style={{ textAlign: "left" }}>
@@ -25,6 +25,8 @@ function EmployeeRow({ thumbnail, firstName, lastName, email, phone }) {
         {phone}
       </Col>
     </Row>
+    <hr></hr>
+    </div>
   );
 }
 

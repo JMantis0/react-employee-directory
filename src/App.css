@@ -1,8 +1,86 @@
 .App {
   text-align: center;
+  color: white;
+  /* background-image: url("./images/br.jpg"); */
 }
 
-.columnTitles {
-  font-weight: 700;
-  font-size: 2vw;
+ body {
+   background-image: url("./images/br.jpg");
+}
+
+.jumbotron {
+  background-color: transparent;
+
+  margin-bottom: 0;
+}
+.jumbotron h1 {
+font-family: 'Arvo', serif;
+font-size: 6vw;
+}
+.inputrow {
+  margin-bottom: 20px;
+}
+
+.sortrow {
+  align-items: center;
+  font-family: 'Red Rose', cursive;
+}
+
+.sortrow button {
+  font-size: 1.5vw;
+}
+
+.employeeRow {
+  align-items: center;
+  font-size: 1.5vw;
+  font-family: 'Red Rose', cursive;
+}
+
+img {
+  width: 5vw;
+  height: 5vw;
+}
+
+.button {
+  background-color: blue;
+  color: yellow;
+  width: 100%;
+}
+
+hr {
+  color: white;
+  background-color: white;
+  margin: 0;
+}
+
+@-webkit-keyframes hvr-pulse-grow {
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+@keyframes hvr-pulse-grow {
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+.hvr-pulse-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-pulse-grow:hover, .hvr-pulse-grow:active {
+  -webkit-animation-name: hvr-pulse-grow;
+  animation-name: hvr-pulse-grow;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
 }

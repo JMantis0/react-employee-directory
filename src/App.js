@@ -118,8 +118,7 @@ function App() {
     <div className="App">
       <Container fluid>
         <Header />
-        <InputBar onChange={handleChange} />
-        <hr></hr>
+        <InputBar className="inputbar" onChange={handleChange} />
         <SortBar
           ascendByPhone={ascendSortByPhone}
           descendByPhone={descendSortByPhone}
@@ -130,6 +129,7 @@ function App() {
           descendByLastName={descendSortByLastName}
           descendByFirstName={descendSortByFirstName}
         />
+
         <EmployeeList list={filteredEmployeeState} />
       </Container>
     </div>

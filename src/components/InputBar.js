@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 function InputBar (props) {
 
   return (
-    <Row>
+    <Row className="inputrow">
       <Col><div>Search:</div>
       <input onChange={props.onChange}></input>
       </Col>

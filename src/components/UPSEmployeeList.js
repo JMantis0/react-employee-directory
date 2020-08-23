@@ -2,7 +2,6 @@ import React from "react";
 import EmployeeRow from "./UPSEmployeeRow"
 
 function UPSEmployeeList({ list }) {
-  console.log(list)
   return (
     <div>
       {list.filteredEmployees.map((employee) => (

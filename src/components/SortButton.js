@@ -1,12 +1,9 @@
 import React from "react";
+import Button from "react-bootstrap/Button"
 import { useBoolean } from "react-hanger";
-
-
-
 
 function SortButton({ ascendSort, descendSort, buttonName }) {
   const ascending = useBoolean(true);
-  console.log(typeof buttonName)
   function sortOnColumnAndToggleState() {
     if (ascending.value === true) {
       ascendSort();
@@ -16,7 +13,7 @@ function SortButton({ ascendSort, descendSort, buttonName }) {
       ascending.toggle();
     }
   }
-  return <button onClick={sortOnColumnAndToggleState}>{(ascending.value) ? buttonName + "▼" : buttonName + "▲"}</button>;
+  return <Button className="hvr-pulse-grow button" onClick={sortOnColumnAndToggleState}>{(ascending.value) ? buttonName + "▼" : buttonName + "▲"}</Button>;
 }
 
 export default SortButton;
