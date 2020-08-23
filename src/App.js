@@ -4,12 +4,8 @@ import Header from "./components/Header";
 import Container from "react-bootstrap/Container";
 import EmployeeList from "./components/EmployeeList";
 import employees from "./MOCK_DATA.json";
-import UPSEmployeeList from "./components/UPSEmployeeList";
-import UPSEmployeeRow from "./components/UPSEmployeeRow"
-import upsEmployees from "./csvjson (1).json"
-import SortButton from "./components/SortButton"
-import SortBar from "./components/SortBar"
-import InputBar from "./components/InputBar"
+import SortBar from "./components/SortBar";
+import InputBar from "./components/InputBar";
 
 function App() {
   let [employeeState, setEmployeeState] = useState({
@@ -23,81 +19,114 @@ function App() {
   function handleChange(event) {
     const newInputState = event.target.value;
     setInputState(newInputState);
-  
   }
 
   useEffect(() => {
     setFilteredEmployeeState({
-      filteredEmployees: employeeState.employees.filter(
-        (employee) => {
-          return employee.lastName.toLowerCase().includes( inputState.toLowerCase()) || employee.firstName.toLowerCase().includes(inputState.toLowerCase());
-        } 
-      )
+      filteredEmployees: employeeState.employees.filter((employee) => {
+        return (
+          employee.lastName.toLowerCase().includes(inputState.toLowerCase()) ||
+          employee.firstName.toLowerCase().includes(inputState.toLowerCase())
+        );
+      }),
     });
-
-
-  }, [inputState]);
+  }, [inputState, employeeState]);
 
   // Sort functions use setEmployeeState to arrange the employees
   function ascendSortByLastName() {
     setFilteredEmployeeState({
-      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
-        return a.lastName < b.lastName ? -1 : 1;
-      }),
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.lastName < b.lastName ? -1 : 1;
+        }
+      ),
     });
   }
 
   function ascendSortByFirstName() {
     setFilteredEmployeeState({
-      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
-        return a.firstName < b.firstName ? -1 : 1;
-      }),
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.firstName < b.firstName ? -1 : 1;
+        }
+      ),
     });
   }
 
   function descendSortByLastName() {
     setFilteredEmployeeState({
-      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
-        return a.lastName < b.lastName ? 1 : -1;
-      }),
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.lastName < b.lastName ? 1 : -1;
+        }
+      ),
     });
   }
 
   function descendSortByFirstName() {
     setFilteredEmployeeState({
-      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
-        return a.firstName < b.firstName ? 1 : -1;
-      }),
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.firstName < b.firstName ? 1 : -1;
+        }
+      ),
     });
   }
 
-  function descendSortByRank() {
+  function descendSortByEmail() {
     setFilteredEmployeeState({
-      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
-        return a.rank < b.rank ? 1 : -1;
-      }),
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.email < b.email ? 1 : -1;
+        }
+      ),
     });
-  
   }
-  function ascendSortByRank() {
+  function ascendSortByEmail() {
     setFilteredEmployeeState({
-      filteredEmployees: filteredEmployeeState.filteredEmployees.sort((a, b) => {
-        return a.rank > b.rank ? 1 : -1;
-      }),
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.email > b.email ? 1 : -1;
+        }
+      ),
+    });
+  }
+
+  function ascendSortByPhone() {
+    setFilteredEmployeeState({
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.phone > b.phone ? 1 : -1;
+        }
+      ),
+    });
+  }
+
+  function descendSortByPhone() {
+    setFilteredEmployeeState({
+      filteredEmployees: filteredEmployeeState.filteredEmployees.sort(
+        (a, b) => {
+          return a.phone < b.phone ? 1 : -1;
+        }
+      ),
     });
   }
 
   return (
     <div className="App">
       <Container fluid>
+        <Header />
         <InputBar onChange={handleChange} />
+        <hr></hr>
         <SortBar
-        ascendByRank={ascendSortByRank}
-        descendByRank={descendSortByRank}
-        ascendByLastName={ascendSortByLastName}
-        ascendByFirstName={ascendSortByFirstName}
-        descendByLastName={descendSortByLastName}
-        descendByFirstName={descendSortByFirstName}
+          ascendByPhone={ascendSortByPhone}
+          descendByPhone={descendSortByPhone}
+          ascendByEmail={ascendSortByEmail}
+          descendByEmail={descendSortByEmail}
+          ascendByLastName={ascendSortByLastName}
+          ascendByFirstName={ascendSortByFirstName}
+          descendByLastName={descendSortByLastName}
+          descendByFirstName={descendSortByFirstName}
         />
         <EmployeeList list={filteredEmployeeState} />
       </Container>

@@ -1,8 +1,10 @@
 import React from "react";
-import EmployeeRow from "./EmployeeRow"
+import EmployeeRow from "./EmployeeRow";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function EmployeeList({ list }) {
-  console.log(list)
+  console.log(list);
   return (
     <div>
       {list.filteredEmployees.map((employee) => (
