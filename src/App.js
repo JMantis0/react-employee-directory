@@ -26,7 +26,9 @@ function App() {
       filteredEmployees: employeeState.employees.filter((employee) => {
         return (
           employee.lastName.toLowerCase().includes(inputState.toLowerCase()) ||
-          employee.firstName.toLowerCase().includes(inputState.toLowerCase())
+          employee.firstName.toLowerCase().includes(inputState.toLowerCase()) ||
+          employee.email.toLowerCase().includes(inputState.toLowerCase()) ||
+          employee.phone.toLowerCase().includes(inputState.toLowerCase())
         );
       }),
     });
