@@ -2,15 +2,11 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function EmployeeRow({ thumbnail, firstName, lastName, email, phone }) {
+function EmployeeRow({ firstName, lastName, email, phone }) {
   return (
-    <div>
     <Row className="employeeRow">
       <Col xs={1}>
-        <img
-          src={thumbnail}
-          alt="employeeImage"
-        ></img>
+      <i className="fas fa-user"></i>
       </Col>
       <Col xs={2} style={{ textAlign: "left" }}>
         {firstName}
@@ -25,8 +21,6 @@ function EmployeeRow({ thumbnail, firstName, lastName, email, phone }) {
         {phone}
       </Col>
     </Row>
-    <hr></hr>
-    </div>
   );
 }
 

@@ -1,7 +1,5 @@
 import React from "react";
 import EmployeeRow from "./EmployeeRow";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 function EmployeeList({ list }) {
   return (

@@ -7,8 +7,9 @@ import employees from "./MOCK_DATA.json";
 import SortBar from "./components/SortBar";
 import InputBar from "./components/InputBar";
 
+
 function App() {
-  let [employeeState, setEmployeeState] = useState({
+  const employeeState= ({
     employees: employees,
   });
   let [filteredEmployeeState, setFilteredEmployeeState] = useState({
@@ -32,7 +33,7 @@ function App() {
         );
       }),
     });
-  }, [inputState, employeeState]);
+  }, [employeeState.employees, inputState]);
 
   // Sort functions use setEmployeeState to arrange the employees
   function ascendSortByLastName() {
@@ -129,7 +130,6 @@ function App() {
           descendByLastName={descendSortByLastName}
           descendByFirstName={descendSortByFirstName}
         />
-
         <EmployeeList list={filteredEmployeeState} />
       </Container>
     </div>

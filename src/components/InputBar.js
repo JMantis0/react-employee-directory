@@ -6,7 +6,7 @@ function InputBar (props) {
 
   return (
     <Row className="inputrow">
-      <Col><div>Search:</div>
+      <Col><div className="search">Search:</div>
       <input onChange={props.onChange}></input>
       </Col>
     </Row>

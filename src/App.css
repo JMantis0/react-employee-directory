@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  color: white;
+  color: rgb(255, 255, 255);
   /* background-image: url("./images/br.jpg"); */
 }
 
@@ -10,15 +10,20 @@
 
 .jumbotron {
   background-color: transparent;
-
   margin-bottom: 0;
 }
 .jumbotron h1 {
 font-family: 'Arvo', serif;
 font-size: 6vw;
+color: rgb(255, 217, 0);
 }
 .inputrow {
   margin-bottom: 20px;
+}
+.search {
+  font-family: 'Arvo', serif;
+  font-size: 3vw;
+  color: rgb(255, 217, 0);
 }
 
 .sortrow {
@@ -28,12 +33,31 @@ font-size: 6vw;
 
 .sortrow button {
   font-size: 1.5vw;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 15px;
 }
 
 .employeeRow {
+  padding: 10px;
   align-items: center;
   font-size: 1.5vw;
   font-family: 'Red Rose', cursive;
+}
+
+.employeeRow:nth-child(3n+2) {
+  background-color: rgba(1, 13, 63, 0.9);
+  color: rgb(122, 255, 122);
+}
+
+.employeeRow:nth-child(3n + 1) {
+  background-color: rgba(0, 15, 83, 0.9);
+  color: rgb(255, 134, 134);
+}
+
+.employeeRow:nth-child(3n) {
+  background-color: rgba(0, 26, 144, 0.9);
+  color: rgb(253, 255, 122);
 }
 
 img {
