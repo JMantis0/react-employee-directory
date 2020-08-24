@@ -15,12 +15,14 @@ None: Visit the react-employee-directory [site](https://jreact-employee-director
 ## Usage
 
 Click the sort buttons at the top of each column and enter search term in the input.
-=
+
+![directory-gif](./src/images/directory.gif)
+
 ## Concepts within
 - React:
 - Hooks
 - Stateful Components
-- props
+- Props
 
 ## Credits
 
