@@ -1,38 +1,117 @@
 .App {
   text-align: center;
+  color: rgb(255, 255, 255);
+  /* background-image: url("./images/br.jpg"); */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ body {
+   background-image: url("./images/br.jpg");
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.jumbotron {
+  background-color: transparent;
+  margin-bottom: 0;
+}
+.jumbotron h1 {
+font-family: 'Arvo', serif;
+font-size: 6vw;
+color: rgb(255, 217, 0);
+}
+.inputrow {
+  margin-bottom: 20px;
+}
+.search {
+  font-family: 'Arvo', serif;
+  font-size: 3vw;
+  color: rgb(255, 217, 0);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.sortrow {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: 'Red Rose', cursive;
+}
+
+.sortrow .button {
+  font-size: 1.5vw;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 15px;
+  color: yellow;
+  background-color: blue;
+}
+
+.employeeRow {
+  padding: 10px;
+  align-items: center;
+  font-size: 1.5vw;
+  font-family: 'Red Rose', cursive;
+}
+
+.employeeRow:nth-child(3n+2) {
+  background-color: rgba(1, 13, 63, 0.9);
+  color: rgb(122, 255, 122);
+}
+
+.employeeRow:nth-child(3n + 1) {
+  background-color: rgba(0, 15, 83, 0.9);
+  color: rgb(255, 134, 134);
+}
+
+.employeeRow:nth-child(3n) {
+  background-color: rgba(0, 26, 144, 0.9);
+  color: rgb(253, 255, 122);
+}
+
+img {
+  width: 5vw;
+  height: 5vw;
+}
+
+.button {
+  background-color: blue;
+  color: yellow;
+  width: 100%;
+}
+
+hr {
   color: white;
+  background-color: rgb(104, 255, 104);
+  margin: 0;
+  width: 120%;
 }
 
-.App-link {
-  color: #61dafb;
+footer {
+ margin-top: 250px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+@-webkit-keyframes hvr-pulse-grow {
   to {
-    transform: rotate(360deg);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
   }
+}
+@keyframes hvr-pulse-grow {
+  to {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+.hvr-pulse-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-pulse-grow:hover, .hvr-pulse-grow:active {
+  -webkit-animation-name: hvr-pulse-grow;
+  animation-name: hvr-pulse-grow;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
 }
