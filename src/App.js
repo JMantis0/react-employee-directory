@@ -6,6 +6,7 @@ import EmployeeList from "./components/EmployeeList";
 import employees from "./MOCK_DATA.json";
 import SortBar from "./components/SortBar";
 import InputBar from "./components/InputBar";
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -131,6 +132,7 @@ function App() {
           descendByFirstName={descendSortByFirstName}
         />
         <EmployeeList list={filteredEmployeeState} />
+        <Footer />
       </Container>
     </div>
   );

@@ -31,11 +31,13 @@ color: rgb(255, 217, 0);
   font-family: 'Red Rose', cursive;
 }
 
-.sortrow button {
+.sortrow .button {
   font-size: 1.5vw;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-top-right-radius: 15px;
+  color: yellow;
+  background-color: blue;
 }
 
 .employeeRow {
@@ -73,8 +75,9 @@ img {
 
 hr {
   color: white;
-  background-color: white;
+  background-color: rgb(104, 255, 104);
   margin: 0;
+  width: 120%;
 }
 
 @-webkit-keyframes hvr-pulse-grow {
