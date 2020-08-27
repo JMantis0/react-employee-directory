@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer, createContext } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Container from "react-bootstrap/Container";
@@ -6,13 +6,18 @@ import EmployeeList from "./components/EmployeeList";
 import employees from "./MOCK_DATA.json";
 import SortBar from "./components/SortBar";
 import InputBar from "./components/InputBar";
-import MyFooter from "./components/MyFooter"
+import MyFooter from "./components/MyFooter";
 
+
+// Ideas:  Create use context component to remove props on sortbar
+const EmployeeContext = createContext({
+  filteredEmployees: employees
+});
 
 function App() {
-  const employeeState= ({
+  const employeeState = {
     employees: employees,
-  });
+  };
   let [filteredEmployeeState, setFilteredEmployeeState] = useState({
     filteredEmployees: employees,
   });
@@ -35,6 +40,18 @@ function App() {
       }),
     });
   }, [employeeState.employees, inputState]);
+
+  const [sortState, dispatch] = useReducer(
+    (sortState, action) => {
+
+    }
+  )
+
+  function EmployeeProvider({}) {
+
+  }
+
+  //  UseReducer!:
 
   // Sort functions use setEmployeeState to arrange the employees
   function ascendSortByLastName() {
