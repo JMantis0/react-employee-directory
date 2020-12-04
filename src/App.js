@@ -8,16 +8,13 @@ import SortBar from "./components/SortBar";
 import InputBar from "./components/InputBar";
 import MyFooter from "./components/MyFooter";
 
-
 // Ideas:  Create use context component to remove props on sortbar
 const EmployeeContext = createContext({
-  filteredEmployees: employees
+  filteredEmployees: employees,
 });
 
 function App() {
-  const employeeState = {
-    employees: employees,
-  };
+  const employeeState = { employees };
   let [filteredEmployeeState, setFilteredEmployeeState] = useState({
     filteredEmployees: employees,
   });
@@ -40,16 +37,6 @@ function App() {
       }),
     });
   }, [employeeState.employees, inputState]);
-
-  const [sortState, dispatch] = useReducer(
-    (sortState, action) => {
-
-    }
-  )
-
-  function EmployeeProvider({}) {
-
-  }
 
   //  UseReducer!:
 
